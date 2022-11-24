@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Countdown } from "../components/Countdown";
 import { spacing } from "../utils/sizes";
 import { RoundedButton } from "../components/RoundedButton";
+import { colors } from "../utils/colors";
 
 export const Timer = ({ focusSubject }) => {
     const [isStarted, setIsStarted] = useState(false);
@@ -14,6 +15,14 @@ export const Timer = ({ focusSubject }) => {
                     onProgress={() => {}}
                     onEnd={() => {}}
                 />
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>Working On :</Text>
+                    <View
+                        style={{ alignItems: "center", marginLeft: spacing.sm }}
+                    >
+                        <Text style={styles.task}>{focusSubject}</Text>
+                    </View>
+                </View>
             </View>
 
             <View style={styles.buttonWrapper}>
@@ -52,5 +61,20 @@ const styles = StyleSheet.create({
         padding: spacing.md,
         justifyContent: "center",
         alignItems: "center",
+    },
+    title: {
+        color: colors.white,
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    task: {
+        color: colors.white,
+        textAlign: "center",
+    },
+    textContainer: {
+        flexDirection: "row",
+        padding: spacing.lg,
+        justifyContent: "flex-start",
+        paddingTop: spacing.xxl,
     },
 });

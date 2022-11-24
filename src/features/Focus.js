@@ -13,7 +13,7 @@ export const Focus = ({ addSubject }) => {
                 <TextInput
                     style={styles.textInput}
                     onChangeText={setSubject}
-                    label="focus on ?"
+                    label="Focusing On ?"
                 />
                 <View style={styles.button}>
                     <RoundedButton
