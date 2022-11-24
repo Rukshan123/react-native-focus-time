@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Timer } from "./src/features/Timer";
 
 export default function App() {
-    const [currentSubject, setCurrentSubject] = useState(null);
+    const [currentSubject, setCurrentSubject] = useState("test");
     return (
         <SafeAreaView style={styles.container}>
             {!currentSubject ? (
