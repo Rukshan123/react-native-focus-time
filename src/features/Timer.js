@@ -5,6 +5,7 @@ import { Countdown } from "../components/Countdown";
 import { spacing } from "../utils/sizes";
 import { RoundedButton } from "../components/RoundedButton";
 import { colors } from "../utils/colors";
+import { Timing } from "./Timing";
 
 const ONE_SECOND_IN_MS = 1000;
 
@@ -16,10 +17,11 @@ const PATTERN = [
     1 * ONE_SECOND_IN_MS,
 ];
 
-export const Timer = ({ focusSubject }) => {
+export const Timer = ({ focusSubject, clearSubject }) => {
     const [isStarted, setIsStarted] = useState(false);
     const [progress, setProgress] = useState(1);
-    const [minutes, setMinutes] = useState(0.1);
+    const [minutes, setMinutes] = useState(10);
+
     return (
         <View style={styles.container}>
             <View style={styles.countDown}>
@@ -48,6 +50,9 @@ export const Timer = ({ focusSubject }) => {
                     color={colors.lightBlue}
                 />
             </View>
+            <View style={styles.timingButtonWrapper}>
+                <Timing OnChangeTime={setMinutes} />
+            </View>
             <View style={styles.buttonWrapper}>
                 {!isStarted ? (
                     <RoundedButton
@@ -64,6 +69,9 @@ export const Timer = ({ focusSubject }) => {
                         }}
                     />
                 )}
+            </View>
+            <View style={styles.clearSubject}>
+                <RoundedButton size={50} title="Back" onPress={clearSubject} />
             </View>
         </View>
     );
@@ -99,5 +107,14 @@ const styles = StyleSheet.create({
         padding: spacing.lg,
         justifyContent: "flex-start",
         paddingTop: spacing.xxl,
+    },
+    timingButtonWrapper: {
+        paddingTop: spacing.xxl,
+        flex: 0.1,
+        flexDirection: "row",
+    },
+    clearSubject: {
+        flexDirection: "row",
+        justifyContent: "center",
     },
 });
