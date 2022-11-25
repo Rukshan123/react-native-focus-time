@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Vibration } from "react-native";
+import { useKeepAwake } from "expo-keep-awake";
 import { ProgressBar } from "react-native-paper";
 import React, { useState } from "react";
 import { Countdown } from "../components/Countdown";
@@ -18,6 +19,7 @@ const PATTERN = [
 ];
 
 export const Timer = ({ focusSubject, clearSubject }) => {
+    useKeepAwake();
     const [isStarted, setIsStarted] = useState(false);
     const [progress, setProgress] = useState(1);
     const [minutes, setMinutes] = useState(0.1);
